@@ -7,7 +7,7 @@ Detecting Amazing Avocados aim to create a low-cost grading and sorting fruit ma
 ## Creating your ML model (optional)
 
 1. Install [Lobe.ai](https://www.lobe.ai/)
-2. Download the [raw data set](storageexplorer://v=1&accountid=%2Fsubscriptions%2F9e4be01c-985e-4886-bca8-990d4b722050%2FresourceGroups%2Favocado%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Favocadosphotos&subscriptionid=9e4be01c-985e-4886-bca8-990d4b722050&resourcetype=Azure.BlobContainer&resourcename=rawphotos) you can use [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) or the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+2. Download the [raw data set](https://avocadosphotos.blob.core.windows.net/rawphotos), you can use [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) or the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/). The container is public.
 3. Create your ML model by labeling the photos and using [the lobe.ai help](https://www.lobe.ai/docs/welcome/welcome).
 4. Export your ML model as a **Tensor-flow lite** model.
 
