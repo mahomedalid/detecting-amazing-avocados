@@ -5,8 +5,9 @@ from PIL import Image
 from lobe import ImageModel
 
 def main():
+	MODEL_PATH="../models/v0.1/"
 	# Load Lobe model
-	model = ImageModel.load('~/model')
+	model = ImageModel.load(MODEL_PATH)
 	with picamera.PiCamera(resolution=(224, 224), framerate=30) as camera:
 		
 		# Start camera preview
