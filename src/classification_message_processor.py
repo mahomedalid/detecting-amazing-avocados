@@ -57,7 +57,7 @@ class RaspberryPiBraincraftHatLed:
 	def __init__(self):
 		self.dots = dotstar.DotStar(clock=board.D6, data=board.D5, n=30)
 
-	def process_label(self, classification_label):
+	def process_label(self, classification_label, confidence_value):
 		color = RaspberryPiBraincraftHatLed.COLOR_MAP.get(classification_label, _BLACK)
 		for i in range(len(self.dots)):
 			self.dots[i] = color
@@ -71,7 +71,7 @@ class ServoProcessor:
 	def __init__(self):
 		pass
 	
-	def process_label(self, classification_label):
+	def process_label(self, classification_label, confidence_value):
 		pass
 
 
@@ -83,8 +83,8 @@ class ClassificationMessageProcessor(object):
 			ServoProcessor()
 		]
 	
-	def process_label(self, classification_label):
+	def process_label(self, classification_label, confidence_value):
 		classification_label = ClassificationLabels.parse_to_enum(classification_label)
 
 		for processor in self.processors:
-			processor.process_label(classification_label=classification_label)
+			processor.process_label(classification_label=classification_label, confidence_value=confidence_value)
