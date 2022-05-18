@@ -3,11 +3,17 @@ import picamera
 import io
 from PIL import Image
 from lobe import ImageModel
+from classification_message_processor import ClassificationMessageProcessor
+
 
 def main():
 	MODEL_PATH="../models/v0.1/"
 	# Load Lobe model
 	model = ImageModel.load(MODEL_PATH)
+	
+	# Message processors
+	message_processor = ClassificationMessageProcessor()
+
 	with picamera.PiCamera(resolution=(224, 224), framerate=30) as camera:
 		
 		# Start camera preview
@@ -45,9 +51,12 @@ def main():
 
 			# Get the confidence for the top label
 			confidence = result.labels[0][1]
-
+			
+			# Show the LEDs, Servo, and any additional processors
+			message_processor.process_label(label, confidence)
+			
 			# Add label text to camera preview
-			camera.annotate_text = label
+			camera.annotate_text = f"{label} {confidence}"
 
 			# End performance timer
 			end = time.perf_counter()
