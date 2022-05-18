@@ -94,8 +94,9 @@ class ClassificationMessageProcessor(object):
 
 
 def main():
+	MODEL_PATH="../models/v0.1/"
 	# Load Lobe model
-	model = ImageModel.load('/home/spacekatt/model')
+	model = ImageModel.load(MODEL_PATH)
 	message_processor = ClassificationMessageProcessor()
 
 	with picamera.PiCamera(resolution=(224, 224), framerate=30) as camera:
