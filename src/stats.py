@@ -12,15 +12,15 @@ def create_connection(db_file):
     return conn
 
 def initdb():
-    database = r"../db/stats.db"
+    database = r"/var/lib/grafana/stats.db"
 
     sql_create_stats_table = """ CREATE TABLE IF NOT EXISTS stats (
                                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 									   label VARCHAR(50),
 									   confidence FLOAT,
 									   total_time INTEGEr,
-									   predict_time INTEGER
-									   datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+									   predict_time INTEGER,
+									   t TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
                                     ); """
     conn = create_connection(database)
 
