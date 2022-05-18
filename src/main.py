@@ -1,11 +1,17 @@
 import time
 import picamera
 import io
+import stats
+import sqlite3
 from PIL import Image
 from lobe import ImageModel
+from sqlite3 import Error
 
 def main():
 	MODEL_PATH="../models/v0.1/"
+
+	conn = stats.initdb()
+
 	# Load Lobe model
 	model = ImageModel.load(MODEL_PATH)
 	with picamera.PiCamera(resolution=(224, 224), framerate=30) as camera:
@@ -61,9 +67,11 @@ def main():
 			# Print performance times
 			print(f"\rLabel: {label} | Confidence: {confidence*100: .2f}% | FPS: {1/total_time: .2f} | prediction fps: {1/predict_time: .2f} | {predict_time/total_time: .2f}", end='', flush=True)
 
+			prediction = (label, confidence, total_time, predict_time)
+			stats.insert_prediction(conn, prediction)
+
 			# Wait for 1 second so the label is visible on the screen
 			time.sleep(1)
-
 
 if __name__ == '__main__':
 	try:
