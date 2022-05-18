@@ -1,0 +1,2 @@
+- name: Update system
+  import_tasks: update.yml
