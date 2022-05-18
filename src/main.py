@@ -7,6 +7,7 @@ from PIL import Image
 from lobe import ImageModel
 from sqlite3 import Error
 from classification_message_processor import ClassificationMessageProcessor
+from classification_message_processor import ClassificationLabels
 
 def main():
 	MODEL_PATH="../models/v0.1/"
@@ -75,8 +76,9 @@ def main():
 			# Print performance times
 			print(f"\rLabel: {label} | Confidence: {confidence*100: .2f}% | FPS: {1/total_time: .2f} | prediction fps: {1/predict_time: .2f} | {predict_time/total_time: .2f}", end='', flush=True)
 
-			prediction = (label, confidence, total_time, predict_time)
-			stats.insert_prediction(conn, prediction)
+			if label != ClassificationLabels.NOTHING:
+				prediction = (label, confidence, total_time, predict_time)
+				stats.insert_prediction(conn, prediction)
 
 			# Wait for 1 second so the label is visible on the screen
 			time.sleep(1)

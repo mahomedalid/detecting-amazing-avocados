@@ -18,8 +18,8 @@ def initdb():
                                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 									   label VARCHAR(50),
 									   confidence FLOAT,
-									   total_time INTEGEr,
-									   predict_time INTEGER,
+									   total_time FLOAT,
+									   predict_time FLOAT,
 									   t TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
                                     ); """
     conn = create_connection(database)
