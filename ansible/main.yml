@@ -1,0 +1,4 @@
+- hosts: raspberrypis
+  tasks:
+    - import_role:
+        name: initSetup
