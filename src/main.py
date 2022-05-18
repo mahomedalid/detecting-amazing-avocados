@@ -49,12 +49,12 @@ def main():
 			# Get the prediction label
 			label = result.prediction
 
-			# show the LEDs
-			message_processor.process_label(label)
-
 			# Get the confidence for the top label
 			confidence = result.labels[0][1]
-
+			
+			# Show the LEDs, Servo, and any additional processors
+			message_processor.process_label(label, confidence)
+			
 			# Add label text to camera preview
 			camera.annotate_text = f"{label} {confidence}"
 
