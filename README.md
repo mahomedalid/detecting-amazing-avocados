@@ -17,5 +17,9 @@ Detecting Amazing Avocados aim to create a low-cost grading and sorting fruit ma
 2. [Download the Lobe.ai code](https://learn.adafruit.com/lobe-rock-paper-scissors/play-rock-paper-scissors)
 3. [Transfer and test the model](https://learn.adafruit.com/lobe-rock-paper-scissors/testing-your-model-on-the-pi), there is an example of [how to transfer files using an ftp connection](https://learn.adafruit.com/lobe-rock-paper-scissors/setup-an-ftp-connection) but you can also use scp, or any other method to transfer files.
 
+## Setting up your RaspberryPi
+
+There is a [condensed guide here](docs/getting-started-recipe.md).
+
 # Contributing
 
